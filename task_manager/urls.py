@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.urls import path
-from task_manager import views
+from task_manager.views import IndexPageView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
+    path('', IndexPageView.as_view(), name='index'),
 ]
