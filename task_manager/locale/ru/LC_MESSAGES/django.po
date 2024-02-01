@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-01 14:40+0300\n"
+"POT-Creation-Date: 2024-02-01 16:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,41 +20,37 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: templates/base.html:12 templates/base.html:24 templates/index.html:8
+#: templates/base.html:11 templates/base.html:23 templates/index.html:9
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: templates/base.html:25 templates/users/index.html:7
+#: templates/base.html:24 templates/users/index.html:7
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/base.html:26 templates/login.html:6
+#: templates/base.html:25 templates/login.html:7
 msgid "Login"
 msgstr "Вход"
 
-#: templates/base.html:27
+#: templates/base.html:26
 msgid "Registration"
 msgstr "Регистрация"
 
-#: templates/index.html:9
+#: templates/index.html:10
 msgid "Welcome!"
 msgstr "Добро пожаловать!"
 
-#: templates/index.html:10
+#: templates/index.html:11
 msgid "Continue reading..."
 msgstr "Продолжить чтение..."
 
-#: templates/login.html:9 templates/login.html:10 templates/users/index.html:13
+#: templates/login.html:12
+msgid "Continue"
+msgstr "Войти"
+
+#: templates/users/index.html:13
 msgid "Username"
 msgstr "Имя пользователя"
-
-#: templates/login.html:13 templates/login.html:14
-msgid "Password"
-msgstr ""
-
-#: templates/login.html:16
-msgid "Log in"
-msgstr ""
 
 #: templates/users/index.html:14
 msgid "Fullname"
@@ -64,18 +60,10 @@ msgstr "Полное имя"
 msgid "Date of creation"
 msgstr "Дата создания"
 
-#: views.py:18
+#: views.py:21
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: views.py:23
-msgid ""
-"Please enter the correct username and password. Both fields can be case "
-"sensitive."
-msgstr ""
-"Пожалуйста, введите правильное имя пользователя и пароль. Оба поля могут "
-"быть чувствительны к регистру."
-
-#: views.py:32
+#: views.py:29
 msgid "You are logged out"
 msgstr "Вы разлогинены"
