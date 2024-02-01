@@ -1,7 +1,6 @@
 {% load django_bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-{% bootstrap_messages %}
 {% load i18n %}
 
 
@@ -16,7 +15,7 @@
 
 <body class="d-flex flex-column min-vh-100">
 
-<div id="navbar">
+
 {% block navbar %}
 <div class="container">
   <div class="nav-scroller py-1 mb-3 border-bottom">
@@ -29,33 +28,21 @@
   </div>
 </div>
 {% endblock %}
-</div>
 
-<br><br><br>
-
-{% block main %}
 <div class="container wrapper flex-grow-1">
-  {% if messages %}
-  {% for message in messages %}
-  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-    {{ message|safe }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-  {% endfor %}
-  {% endif %}
-  {% block content %}{% endblock %}
+  {% bootstrap_messages %}
+  {% block content %}
+  {% endblock %}
 </div>
-{% endblock main %}
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-<div id="footer">
-  <footer>
-    <div class="container my-5 pt-4 border-top">
-      <a target="_blank" href="https://github.com/Tarilia">GitHub</a>
+<footer>
+  <div class="container my-5 pt-4 border-top">
+    <div class="text-center">
+      <a target="_blank" class="text-dark text-center" href="https://github.com/Tarilia">GitHub</a>
     </div>
-  </footer>
-</div>
+  </div>
+</footer>
 
 </body>
 </html>
