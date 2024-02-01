@@ -1,5 +1,6 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
+from django.utils.translation import gettext as _
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import TemplateView
@@ -14,7 +15,14 @@ class IndexPageView(TemplateView):
 class LoginUserView(LoginView):
     form_class = LoginUserForm
     template_name = 'login.html'
+    success_message = _("You are logged in")
     next_page = reverse_lazy("index")
+
+    def form_invalid(self, form):
+        messages.warning(self.request,
+                         _("Please enter the correct username and password. "
+                           "Both fields can be case sensitive."),)
+        return self.render_to_response(self.get_context_data(form=form))
 
 
 class LogoutUserView(SuccessMessageMixin, LogoutView):
