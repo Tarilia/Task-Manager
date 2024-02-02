@@ -4,6 +4,9 @@
 
 {% block content %}
 <div class="container wrapper flex-grow-1">
+    <div class="mt-4">
+        {% bootstrap_messages %}
+    </div>
     <h1 class="my-4">{% translate "Login" %}</h1>
     <form action="{% url 'login' %}" method="post" class="form">
         {% csrf_token %}

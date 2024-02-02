@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-02 14:35+0300\n"
+"POT-Creation-Date: 2024-02-02 16:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgstr "Выход"
 msgid "Login"
 msgstr "Вход"
 
-#: templates/base.html:37
+#: templates/base.html:37 templates/users/create.html:7
 msgid "Registration"
 msgstr "Регистрация"
 
@@ -64,6 +64,10 @@ msgstr "Продолжить чтение..."
 msgid "Log in"
 msgstr "Войти"
 
+#: templates/users/create.html:12
+msgid "SignUp"
+msgstr "Зарегистрировать"
+
 #: templates/users/index.html:13
 msgid "Username"
 msgstr "Имя пользователя"
@@ -75,6 +79,18 @@ msgstr "Полное имя"
 #: templates/users/index.html:15
 msgid "Date of creation"
 msgstr "Дата создания"
+
+#: templates/users/index.html:27
+msgid "Edit"
+msgstr "Изменить"
+
+#: templates/users/index.html:29
+msgid "Delete"
+msgstr "Удалить"
+
+#: users/views.py:21
+msgid "User is successfully registered"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: views.py:21
 msgid "You are logged in"
