@@ -4,6 +4,9 @@
 
 {% block content %}
 <div class="container wrapper flex-grow-1">
+    <div class="mt-4">
+        {% bootstrap_messages %}
+    </div>
     <h1 class="my-4">{% translate 'Users' %}</h1>
 
     <table class="table table-striped">
@@ -24,7 +27,7 @@
             <td>{{ user.first_name }} {{ user.last_name }}</td>
             <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
             <td>
-                <a class="text-body-emphasis fw-bold" href="#">{% translate 'Edit' %}</a>
+                <a class="text-body-emphasis fw-bold" href="{% url 'update_users' pk=user.pk %}">{% translate 'Edit' %}</a>
                 <br>
                 <a class="text-body-emphasis fw-bold" href="#">{% translate 'Delete' %}</a>
             </td>
