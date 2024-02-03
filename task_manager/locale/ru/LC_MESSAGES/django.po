@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-02 16:22+0300\n"
+"POT-Creation-Date: 2024-02-03 16:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: templates/base.html:25 templates/users/index.html:7
+#: templates/base.html:25 templates/users/index.html:10
 msgid "Users"
 msgstr "Пользователи"
 
@@ -44,7 +44,7 @@ msgstr "Задачи"
 msgid "Logout"
 msgstr "Выход"
 
-#: templates/base.html:36 templates/login.html:7
+#: templates/base.html:36 templates/login.html:10
 msgid "Login"
 msgstr "Вход"
 
@@ -60,7 +60,7 @@ msgstr "Добро пожаловать!"
 msgid "Continue reading..."
 msgstr "Продолжить чтение..."
 
-#: templates/login.html:12
+#: templates/login.html:15
 msgid "Log in"
 msgstr "Войти"
 
@@ -68,29 +68,49 @@ msgstr "Войти"
 msgid "SignUp"
 msgstr "Зарегистрировать"
 
-#: templates/users/index.html:13
+#: templates/users/index.html:16
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: templates/users/index.html:14
+#: templates/users/index.html:17
 msgid "Fullname"
 msgstr "Полное имя"
 
-#: templates/users/index.html:15
+#: templates/users/index.html:18
 msgid "Date of creation"
 msgstr "Дата создания"
 
-#: templates/users/index.html:27
+#: templates/users/index.html:30
 msgid "Edit"
 msgstr "Изменить"
 
-#: templates/users/index.html:29
+#: templates/users/index.html:32
 msgid "Delete"
 msgstr "Удалить"
+
+#: templates/users/update.html:7
+msgid "Change user"
+msgstr "Изменение пользователя"
+
+#: templates/users/update.html:12
+msgid "Change"
+msgstr "Изменить"
 
 #: users/views.py:21
 msgid "User is successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
+
+#: users/views.py:30
+msgid "User changed successfully"
+msgstr "Пользователь успешно изменен"
+
+#: users/views.py:32
+msgid "You do not have permission to change another user."
+msgstr "У вас нет разрешения на изменение другого пользователя."
+
+#: utils.py:11
+msgid "You are not logged in! Please log in."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
 #: views.py:21
 msgid "You are logged in"

@@ -28,5 +28,5 @@ class UpdateUserView(AuthRequiredMixin, PermissionUserMixin,
     form_class = UpdateUserForm
     success_url = reverse_lazy("index_users")
     success_message = _("User changed successfully")
-    no_permission_url = reverse_lazy("login")
-    no_permission_message = _("You do not have permission to change another user.")
+    no_permis_url = reverse_lazy("login")
+    no_permis_message = _("You do not have permission to change another user.")

@@ -12,10 +12,16 @@ install:
 	poetry install
 
 migrations:
-	python manage.py makemigrations
+	python3 manage.py makemigrations
 
 migrate:
-	python manage.py migrate
+	python3 manage.py migrate
 
 shell:
-	python manage.py shell
+	python3 manage.py shell
+
+messages:
+	django-admin makemessages -l ru
+
+compile:
+	django-admin compilemessages
