@@ -2,7 +2,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import (ListView, CreateView, UpdateView,
+                                  DeleteView)
 from django.views.generic.base import ContextMixin
 
 from task_manager.users.forms import CreateUserForm, UpdateUserForm
@@ -28,5 +29,15 @@ class UpdateUserView(AuthRequiredMixin, PermissionUserMixin,
     form_class = UpdateUserForm
     success_url = reverse_lazy("index_users")
     success_message = _("User changed successfully")
-    no_permis_url = reverse_lazy("login")
+    no_permis_url = reverse_lazy("index_users")
+    no_permis_message = _("You do not have permission to change another user.")
+
+
+class DeleteUserView(AuthRequiredMixin, PermissionUserMixin,
+                     SuccessMessageMixin, DeleteView):
+    template_name = "users/delete.html"
+    model = get_user_model()
+    success_url = reverse_lazy("index_users")
+    success_message = _("User deleted successfully.")
+    no_permis_url = reverse_lazy("index_users")
     no_permis_message = _("You do not have permission to change another user.")

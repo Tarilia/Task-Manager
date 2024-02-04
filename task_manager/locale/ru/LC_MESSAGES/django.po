@@ -106,7 +106,7 @@ msgstr "Пользователь успешно изменен"
 
 #: users/views.py:32
 msgid "You do not have permission to change another user."
-msgstr "У вас нет разрешения на изменение другого пользователя."
+msgstr "У вас нет прав на изменение другого пользователя."
 
 #: utils.py:11
 msgid "You are not logged in! Please log in."

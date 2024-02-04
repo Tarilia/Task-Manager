@@ -29,7 +29,7 @@
             <td>
                 <a class="text-body-emphasis fw-bold" href="{% url 'update_users' pk=user.pk %}">{% translate 'Edit' %}</a>
                 <br>
-                <a class="text-body-emphasis fw-bold" href="#">{% translate 'Delete' %}</a>
+                <a class="text-body-emphasis fw-bold" href="{% url 'delete_users' pk=user.pk %}">{% translate 'Delete' %}</a>
             </td>
         </tr>
         {% endfor %}
