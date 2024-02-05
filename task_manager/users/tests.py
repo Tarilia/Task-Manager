@@ -31,8 +31,8 @@ class TestUsers(TestCase):
         response = self.client.get(reverse('index_users'))
         self.assertContains(response, 'test_first test_last')
 
-        update_user = get_user_model().objects.get(username=
-                                                   self.test_user['username'])
+        update_user = \
+            get_user_model().objects.get(username=self.test_user['username'])
         response = self.client.get(reverse('update_users',
                                            kwargs={'pk': update_user.pk}))
         self.assertEqual(response.status_code, 302)
@@ -48,8 +48,8 @@ class TestUsers(TestCase):
         response = self.client.get(reverse('index_users'))
         self.assertContains(response, 'test_first test_second')
 
-        del_user = get_user_model().objects.get(username=
-                                                self.test_user['username'])
+        del_user = \
+            get_user_model().objects.get(username=self.test_user['username'])
         response = self.client.get(reverse('delete_users',
                                            kwargs={'pk': del_user.pk}))
         self.assertEqual(response.status_code, 302)
