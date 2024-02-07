@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{% translate 'Statuses' %}</h1>
+    <form action="#" method="post" class="form">
+        {% csrf_token %}
+
+        {% translate 'Create status' as button_name %}
+        {% bootstrap_button button_type="submit" button_class="btn btn-secondary" content=button_name %}
+    </form>
+    <table class="table table-stripped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>{% translate 'Name' %}</th>
+            <th>{% translate 'Date of creation' %}</th>
+            <th></th>
+        </tr>
+        </thead>
+        {% for status in object_list %}
+        <tbody>
+        <tr>
+            <td>{{ status.id }}</td>
+            <td>{{ status.name }}</td>
+            <td>{{ status.created_at|date:'d.m.Y H:i' }}</td>
+            <td>
+                <a class="text-body-emphasis fw-bold" href="#">{% translate 'Edit' %}</a>
+                <br>
+                <a class="text-body-emphasis fw-bold" href="#">{% translate 'Delete' %}</a>
+            </td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}
