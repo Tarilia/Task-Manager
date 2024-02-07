@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-04 16:01+0300\n"
+"POT-Creation-Date: 2024-02-07 16:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,39 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: statuses/models.py:7 statuses/templates/statuses/index.html:18
+msgid "Name"
+msgstr "Имя"
+
+#: statuses/models.py:9
+msgid "Created at"
+msgstr "Дата создания"
+
+#: statuses/models.py:12
+msgid "Status"
+msgstr "Статус"
+
+#: statuses/models.py:13 statuses/templates/statuses/index.html:7
+#: templates/base.html:27
+msgid "Statuses"
+msgstr "Статусы"
+
+#: statuses/templates/statuses/index.html:11
+msgid "Create status"
+msgstr "Создать статус"
+
+#: statuses/templates/statuses/index.html:19 templates/users/index.html:18
+msgid "Date of creation"
+msgstr "Дата создания"
+
+#: statuses/templates/statuses/index.html:30 templates/users/index.html:30
+msgid "Edit"
+msgstr "Изменить"
+
+#: statuses/templates/statuses/index.html:32 templates/users/index.html:32
+msgid "Delete"
+msgstr "Удалить"
+
 #: templates/base.html:12 templates/base.html:24 templates/index.html:12
 msgid "Task manager"
 msgstr "Менеджер задач"
@@ -27,10 +60,6 @@ msgstr "Менеджер задач"
 #: templates/base.html:25 templates/users/index.html:10
 msgid "Users"
 msgstr "Пользователи"
-
-#: templates/base.html:27
-msgid "Statuses"
-msgstr "Статусы"
 
 #: templates/base.html:28
 msgid "Labels"
@@ -87,18 +116,6 @@ msgstr "Имя пользователя"
 #: templates/users/index.html:17
 msgid "Fullname"
 msgstr "Полное имя"
-
-#: templates/users/index.html:18
-msgid "Date of creation"
-msgstr "Дата создания"
-
-#: templates/users/index.html:30
-msgid "Edit"
-msgstr "Изменить"
-
-#: templates/users/index.html:32
-msgid "Delete"
-msgstr "Удалить"
 
 #: templates/users/update.html:7
 msgid "Change user"
