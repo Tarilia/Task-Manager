@@ -69,6 +69,7 @@ class TestUpdateUser(TestCase):
                          'password2': 'Password_new'}
         self.url = reverse('update_users', kwargs={'pk': self.user.pk})
 
+    def test_update_user_method_get(self):
         self.client.force_login(self.user)
         response = self.client.get(self.url)
 
@@ -76,6 +77,7 @@ class TestUpdateUser(TestCase):
         self.assertEquals(self.url, f'/users/{self.user.pk}/update/')
         self.assertIsInstance(response.context['form'], UpdateUserForm)
 
+    def test_update_user_method_post(self):
         self.client.force_login(self.user)
         response = self.client.post(self.url, self.new_user)
 
@@ -83,6 +85,7 @@ class TestUpdateUser(TestCase):
         self.assertRedirects(response, reverse('index_users'), 302)
         self.assertEqual(response['Location'], '/users/')
 
+    def test_update_user(self):
         self.client.force_login(self.user)
         self.client.post(self.url, self.new_user)
 
