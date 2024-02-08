@@ -1,5 +1,5 @@
 from django.test import TestCase, Client
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth import get_user_model
 
 
@@ -30,6 +30,15 @@ class TestUsers(TestCase):
 
         response = self.client.get(reverse('index_users'))
         self.assertContains(response, 'test_first test_last')
+
+        user = \
+            get_user_model().objects.get(username=self.test_user['username'])
+        response = self.client.get(reverse_lazy('index_users'))
+        html = response.content.decode()
+        self.assertInHTML(str(user.id), html)
+        self.assertInHTML(str(user.username), html)
+        self.assertInHTML(str(user), html)
+        self.assertInHTML(user.date_joined.strftime("%d.%m.%Y %H:%M"), html)
 
         update_user = \
             get_user_model().objects.get(username=self.test_user['username'])
