@@ -1,19 +1,8 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 
+from task_manager.statuses.views import CreateStatusesView
 from task_manager.users.models import User
-
-
-class IndexStatus(TestCase):
-    def setUp(self):
-        self.client = Client()
-
-    def test_index_status(self):
-        response = self.client.get("/statuses/")
-        self.assertEqual(response.status_code, 200)
-
-        response = self.client.get(reverse('index_statuses'))
-        self.assertNotContains(response, 'Name status')
 
 
 class TestCreate(TestCase):
@@ -25,9 +14,15 @@ class TestCreate(TestCase):
         self.client = Client()
         self.client.force_login(User.objects.first())
 
-    def test_statuses_crud(self):
+    def test_statuses_create(self):
         response = self.client.get(reverse('index_statuses'))
         self.assertNotContains(response, 'Another status')
+
+        response = self.client.get(reverse('create_statuses'))
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(reverse('create_statuses'), '/statuses/create/')
+        self.assertIs(response.resolver_match.func.view_class,
+                      CreateStatusesView)
 
         response = self.client.post(
             reverse('create_statuses'), data={'name': 'Another status'})

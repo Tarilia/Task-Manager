@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-07 16:22+0300\n"
+"POT-Creation-Date: 2024-02-11 15:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: statuses/models.py:7 statuses/templates/statuses/index.html:18
+#: statuses/models.py:7 statuses/templates/statuses/index.html:21
 msgid "Name"
 msgstr "Имя"
 
@@ -32,26 +32,35 @@ msgstr "Дата создания"
 msgid "Status"
 msgstr "Статус"
 
-#: statuses/models.py:13 statuses/templates/statuses/index.html:7
+#: statuses/models.py:13 statuses/templates/statuses/index.html:10
 #: templates/base.html:27
 msgid "Statuses"
 msgstr "Статусы"
 
-#: statuses/templates/statuses/index.html:11
+#: statuses/templates/statuses/create.html:7
+#: statuses/templates/statuses/index.html:14
 msgid "Create status"
 msgstr "Создать статус"
 
-#: statuses/templates/statuses/index.html:19 templates/users/index.html:18
+#: statuses/templates/statuses/create.html:12
+msgid "Create"
+msgstr "Создать"
+
+#: statuses/templates/statuses/index.html:22 templates/users/index.html:18
 msgid "Date of creation"
 msgstr "Дата создания"
 
-#: statuses/templates/statuses/index.html:30 templates/users/index.html:30
+#: statuses/templates/statuses/index.html:33 templates/users/index.html:30
 msgid "Edit"
 msgstr "Изменить"
 
-#: statuses/templates/statuses/index.html:32 templates/users/index.html:32
+#: statuses/templates/statuses/index.html:35 templates/users/index.html:32
 msgid "Delete"
 msgstr "Удалить"
+
+#: statuses/views.py:22
+msgid "Status successfully created"
+msgstr "Статус успешно создан"
 
 #: templates/base.html:12 templates/base.html:24 templates/index.html:12
 msgid "Task manager"
