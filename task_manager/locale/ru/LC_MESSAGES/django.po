@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-11 15:04+0300\n"
+"POT-Creation-Date: 2024-02-12 15:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,8 @@ msgstr "Создать"
 msgid "Date of creation"
 msgstr "Дата создания"
 
-#: statuses/templates/statuses/index.html:33 templates/users/index.html:30
+#: statuses/templates/statuses/index.html:33
+#: statuses/templates/statuses/update.html:12 templates/users/index.html:30
 msgid "Edit"
 msgstr "Изменить"
 
@@ -58,9 +59,17 @@ msgstr "Изменить"
 msgid "Delete"
 msgstr "Удалить"
 
+#: statuses/templates/statuses/update.html:7
+msgid "Edit status"
+msgstr "Изменение статуса"
+
 #: statuses/views.py:22
 msgid "Status successfully created"
 msgstr "Статус успешно создан"
+
+#: statuses/views.py:31
+msgid "Status changed successfully"
+msgstr "Статус успешно изменен"
 
 #: templates/base.html:12 templates/base.html:24 templates/index.html:12
 msgid "Task manager"
