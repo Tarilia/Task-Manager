@@ -1,6 +1,7 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import (ListView, CreateView, UpdateView,
+                                  DeleteView)
 from django.views.generic.base import ContextMixin
 from django.utils.translation import gettext as _
 
@@ -29,3 +30,11 @@ class UpdateStatusesView(AuthRequiredMixin, SuccessMessageMixin,
     form_class = CreateStatusesForm
     success_url = reverse_lazy("index_statuses")
     success_message = _("Status changed successfully")
+
+
+class DeleteStatusesView(AuthRequiredMixin, SuccessMessageMixin,
+                         DeleteView):
+    template_name = "statuses/delete.html"
+    model = Status
+    success_url = reverse_lazy("index_statuses")
+    success_message = _("Status successfully deleted")

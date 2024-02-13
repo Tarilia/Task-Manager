@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+  <h1 class="my-4">{% translate 'Delete status' %}</h1>
+  <p>{% trans 'Are you sure you want to delete' %} {{ status.name }}?</p>
+  <form action="{% url 'delete_statuses' pk=status.pk %}" method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    {% translate 'Yes, delete' as button_name %}
+    {% bootstrap_button button_type="submit" button_class="btn btn-secondary" content=button_name %}
+  </form>
+</div>
+{% endblock %}

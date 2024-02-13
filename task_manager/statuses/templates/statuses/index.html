@@ -32,7 +32,7 @@
             <td>
                 <a class="text-body-emphasis fw-bold" href="{% url 'update_statuses' pk=status.pk %}">{% translate 'Edit' %}</a>
                 <br>
-                <a class="text-body-emphasis fw-bold" href="#">{% translate 'Delete' %}</a>
+                <a class="text-body-emphasis fw-bold" href="{% url 'delete_statuses' pk=status.pk %}">{% translate 'Delete' %}</a>
             </td>
         </tr>
         </tbody>
