@@ -3,7 +3,8 @@ from django.urls import reverse
 
 from task_manager.statuses.models import Status
 from task_manager.statuses.views import (CreateStatusesView,
-                                         UpdateStatusesView)
+                                         UpdateStatusesView,
+                                         DeleteStatusesView)
 from task_manager.users.models import User
 
 
@@ -69,3 +70,32 @@ class TestUpdate(TestCase):
         response = self.client.get(reverse('index_statuses'))
         self.assertNotContains(response, 'Status1')
         self.assertContains(response, 'updated_status')
+
+
+class TestDelete(TestCase):
+    fixtures = [
+        'statuses.json',
+        'users.json']
+
+    def setUp(self):
+        self.client = Client()
+        self.client.force_login(User.objects.first())
+
+    def test_delete_statuses(self):
+        del_status = Status.objects.get(name='Status2')
+        url_delete = reverse('delete_statuses', kwargs={'pk': del_status.pk})
+
+        response = self.client.get(url_delete)
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(url_delete, f'/statuses/{del_status.pk}/delete/')
+        self.assertIs(response.resolver_match.func.view_class,
+                      DeleteStatusesView)
+
+        response = self.client.post(url_delete)
+        self.assertEquals(url_delete, f'/statuses/{del_status.pk}/delete/')
+        self.assertRedirects(response, reverse('index_statuses'), 302)
+        self.assertIs(response.resolver_match.func.view_class,
+                      DeleteStatusesView)
+        self.assertEqual(response['Location'], reverse('index_statuses'))
+
+        self.assertFalse(Status.objects.filter(name='Status2').exists())
