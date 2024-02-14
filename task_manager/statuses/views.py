@@ -7,7 +7,7 @@ from django.utils.translation import gettext as _
 
 from task_manager.statuses.forms import CreateStatusesForm
 from task_manager.statuses.models import Status
-from task_manager.utils import AuthRequiredMixin
+from task_manager.utils import AuthRequiredMixin, ProtectedDeletionMixin
 
 
 class IndexStatusesView(AuthRequiredMixin, ListView, ContextMixin):
@@ -33,8 +33,10 @@ class UpdateStatusesView(AuthRequiredMixin, SuccessMessageMixin,
 
 
 class DeleteStatusesView(AuthRequiredMixin, SuccessMessageMixin,
-                         DeleteView):
+                         ProtectedDeletionMixin, DeleteView):
     template_name = "statuses/delete.html"
     model = Status
     success_url = reverse_lazy("index_statuses")
     success_message = _("Status successfully deleted")
+    protected_url = reverse_lazy("index_users")
+    protected_message = _('Cannot delete user because it is in use')

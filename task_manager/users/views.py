@@ -7,7 +7,8 @@ from django.views.generic import (ListView, CreateView, UpdateView,
 from django.views.generic.base import ContextMixin
 
 from task_manager.users.forms import CreateUserForm, UpdateUserForm
-from task_manager.utils import PermissionUserMixin, AuthRequiredMixin
+from task_manager.utils import (PermissionUserMixin, AuthRequiredMixin,
+                                ProtectedDeletionMixin)
 
 
 class IndexUsersView(ListView, ContextMixin):
@@ -34,10 +35,12 @@ class UpdateUserView(AuthRequiredMixin, PermissionUserMixin,
 
 
 class DeleteUserView(AuthRequiredMixin, PermissionUserMixin,
-                     SuccessMessageMixin, DeleteView):
+                     ProtectedDeletionMixin, SuccessMessageMixin, DeleteView):
     template_name = "users/delete.html"
     model = get_user_model()
     success_url = reverse_lazy("index_users")
     success_message = _("User deleted successfully.")
     no_permis_url = reverse_lazy("index_users")
     no_permis_message = _("You do not have permission to change another user.")
+    protected_url = reverse_lazy("index_users")
+    protected_message = _('Cannot delete user because it is in use')

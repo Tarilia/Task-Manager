@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-12 15:44+0300\n"
+"POT-Creation-Date: 2024-02-13 16:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,6 +46,18 @@ msgstr "Создать статус"
 msgid "Create"
 msgstr "Создать"
 
+#: statuses/templates/statuses/delete.html:7
+msgid "Delete status"
+msgstr "Удаление статуса"
+
+#: statuses/templates/statuses/delete.html:8 templates/users/delete.html:8
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: statuses/templates/statuses/delete.html:13 templates/users/delete.html:13
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
 #: statuses/templates/statuses/index.html:22 templates/users/index.html:18
 msgid "Date of creation"
 msgstr "Дата создания"
@@ -63,13 +75,17 @@ msgstr "Удалить"
 msgid "Edit status"
 msgstr "Изменение статуса"
 
-#: statuses/views.py:22
+#: statuses/views.py:23
 msgid "Status successfully created"
 msgstr "Статус успешно создан"
 
-#: statuses/views.py:31
+#: statuses/views.py:32
 msgid "Status changed successfully"
 msgstr "Статус успешно изменен"
+
+#: statuses/views.py:40
+msgid "Status successfully deleted"
+msgstr "Статус успешно удален"
 
 #: templates/base.html:12 templates/base.html:24 templates/index.html:12
 msgid "Task manager"
@@ -118,14 +134,6 @@ msgstr "Зарегистрировать"
 #: templates/users/delete.html:7
 msgid "Delete user"
 msgstr "Удаление пользователя"
-
-#: templates/users/delete.html:8
-msgid "Are you sure you want to delete"
-msgstr "Вы уверены, что хотите удалить"
-
-#: templates/users/delete.html:13
-msgid "Yes, delete"
-msgstr "Да, удалить"
 
 #: templates/users/index.html:16
 msgid "Username"
