@@ -16,11 +16,10 @@ class TestCreate(TestCase):
         self.client.force_login(User.objects.first())
         self.status = Status.objects.get(name='Status1')
         self.executor = User.objects.get(username='User_test')
-        self.created_task = {
-                'name': 'Test task',
-                'description': 'Test',
-                'status': self.status.pk,
-                'executor': self.executor.pk}
+        self.created_task = {'name': 'Test task',
+                             'description': 'Test',
+                             'status': self.status.pk,
+                             'executor': self.executor.pk}
 
     def test_index_tasks(self):
         response = self.client.get(reverse('index_tasks'))
@@ -28,7 +27,7 @@ class TestCreate(TestCase):
         self.assertContains(response, 'Task2')
         self.assertNotContains(response, 'Task3')
 
-        def test_tasks_create(self):
+    def test_tasks_create(self):
         response = self.client.get(reverse('index_statuses'))
         self.assertNotContains(response, 'Test task')
 

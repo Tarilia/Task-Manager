@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-14 15:28+0300\n"
+"POT-Creation-Date: 2024-02-15 14:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,6 +44,7 @@ msgid "Create status"
 msgstr "Создать статус"
 
 #: statuses/templates/statuses/create.html:12
+#: tasks/templates/tasks/create.html:12
 msgid "Create"
 msgstr "Создать"
 
@@ -91,9 +92,9 @@ msgstr "Статус успешно изменен"
 msgid "Status successfully deleted"
 msgstr "Статус успешно удален"
 
-#: statuses/views.py:42 users/views.py:46
-msgid "Cannot delete user because it is in use"
-msgstr "Невозможно удалить пользователя, потому что он используется"
+#: statuses/views.py:42
+msgid "Cannot delete status because it is in use"
+msgstr "Невозможно удалить статус, потому что он используется"
 
 #: tasks/models.py:11
 msgid "Description"
@@ -116,9 +117,19 @@ msgstr "Задача"
 msgid "Tasks"
 msgstr "Задачи"
 
+#: tasks/templates/tasks/create.html:7
+#, fuzzy
+#| msgid "Create tasks"
+msgid "Create task"
+msgstr "Создать задачу"
+
 #: tasks/templates/tasks/index.html:14
 msgid "Create tasks"
 msgstr "Создать задачу"
+
+#: tasks/views.py:22
+msgid "Task created successfully"
+msgstr "Задача успешно создана"
 
 #: templates/base.html:12 templates/base.html:24 templates/index.html:12
 msgid "Task manager"
@@ -195,6 +206,10 @@ msgstr "У вас нет прав на изменение другого пол�
 #: users/views.py:42
 msgid "User deleted successfully."
 msgstr "Пользователь успешно удален"
+
+#: users/views.py:46
+msgid "Cannot delete user because it is in use"
+msgstr "Невозможно удалить пользователя, потому что он используется"
 
 #: utils.py:12
 msgid "You are not logged in! Please log in."
