@@ -3,7 +3,8 @@ from django.urls import reverse
 
 from task_manager.statuses.models import Status
 from task_manager.tasks.models import Tasks
-from task_manager.tasks.views import CreateTasksView, UpdateTasksView
+from task_manager.tasks.views import (CreateTasksView, UpdateTasksView,
+                                      DeleteTasksView)
 from task_manager.users.models import User
 
 
@@ -77,3 +78,33 @@ class TestUpdate(TestCase):
 
         response = self.client.get(reverse('index_tasks'))
         self.assertContains(response, 'Test_update_task')
+
+
+class TestDelete(TestCase):
+    fixtures = ['tasks.json',
+                'statuses.json',
+                'users.json']
+
+    def setUp(self):
+        self.client = Client()
+        self.client.force_login(User.objects.first())
+        self.del_task = Tasks.objects.all().first()
+
+    def test_delete_tasks(self):
+        response = self.client.get(reverse('index_tasks'))
+        self.assertContains(response, 'Task1')
+
+        url_delete = reverse('delete_tasks', kwargs={'pk': self.del_task.pk})
+
+        response = self.client.get(url_delete)
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(url_delete, f'/tasks/{self.del_task.pk}/delete/')
+        self.assertIs(response.resolver_match.func.view_class,
+                      DeleteTasksView)
+
+        response = self.client.post(url_delete)
+        self.assertRedirects(response, reverse('index_tasks'), 302)
+        self.assertEqual(response['Location'], reverse('index_tasks'))
+
+        response = self.client.get(reverse('index_tasks'))
+        self.assertNotContains(response, 'Task1')
