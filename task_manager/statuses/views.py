@@ -38,5 +38,5 @@ class DeleteStatusesView(AuthRequiredMixin, SuccessMessageMixin,
     model = Status
     success_url = reverse_lazy("index_statuses")
     success_message = _("Status successfully deleted")
-    protected_url = reverse_lazy("index_users")
+    no_protected_redirect_url = reverse_lazy("index_statuses")
     protected_message = _('Cannot delete status because it is in use')

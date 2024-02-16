@@ -29,11 +29,11 @@ class PermissionUserMixin(UserPassesTestMixin):
 
 class ProtectedDeletionMixin:
     protected_message = None
-    protected_url = None
+    no_protected_redirect_url = None
 
     def post(self, request, *args, **kwargs):
         try:
             return super().post(request, *args, **kwargs)
         except ProtectedError:
             messages.warning(self.request, self.protected_message)
-            return redirect(self.protected_url)
+            return redirect(self.no_protected_redirect_url)

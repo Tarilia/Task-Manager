@@ -42,5 +42,5 @@ class DeleteUserView(AuthRequiredMixin, PermissionUserMixin,
     success_message = _("User deleted successfully.")
     no_permis_url = reverse_lazy("index_users")
     no_permis_message = _("You do not have permission to change another user.")
-    protected_url = reverse_lazy("index_users")
+    no_protected_redirect_url = reverse_lazy("index_users")
     protected_message = _('Cannot delete user because it is in use')
