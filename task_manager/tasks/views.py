@@ -1,12 +1,13 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import (ListView, CreateView, UpdateView,
+                                  DeleteView)
 from django.views.generic.base import ContextMixin
 from django.utils.translation import gettext as _
 
 from task_manager.tasks.forms import CreateTasksForm
 from task_manager.tasks.models import Tasks
-from task_manager.utils import AuthRequiredMixin
+from task_manager.utils import AuthRequiredMixin, PermissionAuthorMixin
 
 
 class IndexTasksView(AuthRequiredMixin, ListView, ContextMixin):
@@ -33,3 +34,13 @@ class UpdateTasksView(AuthRequiredMixin, SuccessMessageMixin,
     form_class = CreateTasksForm
     success_url = reverse_lazy("index_tasks")
     success_message = _("Task was successfully modified")
+
+
+class DeleteTasksView(AuthRequiredMixin, SuccessMessageMixin,
+                      PermissionAuthorMixin, DeleteView):
+    template_name = "tasks/delete.html"
+    model = Tasks
+    success_message = _("Task successfully deleted")
+    success_url = reverse_lazy("index_tasks")
+    no_permission_message = _('Only its author can delete a task')
+    no_permission_url = reverse_lazy("index_tasks")

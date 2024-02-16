@@ -27,6 +27,18 @@ class PermissionUserMixin(UserPassesTestMixin):
         return redirect(self.no_permis_url)
 
 
+class PermissionAuthorMixin(UserPassesTestMixin):
+    no_permission_message = None
+    no_permission_url = None
+
+    def test_func(self):
+        return self.get_object().author == self.request.user
+
+    def handle_no_permission(self):
+        messages.warning(self.request, self.no_permission_message)
+        return redirect(self.no_permission_url)
+
+
 class ProtectedDeletionMixin:
     protected_message = None
     no_protected_redirect_url = None
