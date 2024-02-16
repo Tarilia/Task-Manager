@@ -1,6 +1,6 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from django.views.generic.base import ContextMixin
 from django.utils.translation import gettext as _
 
@@ -24,3 +24,12 @@ class CreateTasksView(AuthRequiredMixin, SuccessMessageMixin,
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class UpdateTasksView(AuthRequiredMixin, SuccessMessageMixin,
+                      UpdateView):
+    template_name = "tasks/update.html"
+    model = Tasks
+    form_class = CreateTasksForm
+    success_url = reverse_lazy("index_tasks")
+    success_message = _("Task was successfully modified")
