@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-16 13:20+0300\n"
+"POT-Creation-Date: 2024-02-17 14:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,11 +25,12 @@ msgstr ""
 msgid "Name"
 msgstr "Имя"
 
-#: statuses/models.py:9 tasks/models.py:22
+#: statuses/models.py:9 tasks/models.py:22 tasks/templates/tasks/detail.html:31
 msgid "Created at"
 msgstr "Дата создания"
 
-#: statuses/models.py:12 tasks/models.py:13 tasks/templates/tasks/index.html:23
+#: statuses/models.py:12 tasks/models.py:13
+#: tasks/templates/tasks/detail.html:27 tasks/templates/tasks/index.html:23
 msgid "Status"
 msgstr "Статус"
 
@@ -103,11 +104,13 @@ msgstr "Невозможно удалить статус, потому что о
 msgid "Description"
 msgstr "Описание"
 
-#: tasks/models.py:16 tasks/templates/tasks/index.html:24
+#: tasks/models.py:16 tasks/templates/tasks/detail.html:17
+#: tasks/templates/tasks/index.html:24
 msgid "Author"
 msgstr "Автор"
 
-#: tasks/models.py:20 tasks/templates/tasks/index.html:25
+#: tasks/models.py:20 tasks/templates/tasks/detail.html:21
+#: tasks/templates/tasks/index.html:25
 msgid "Executor"
 msgstr "Исполнитель"
 
@@ -129,6 +132,10 @@ msgstr "Создать задачу"
 #: tasks/templates/tasks/delete.html:7
 msgid "Delete task"
 msgstr "Удаление задачи"
+
+#: tasks/templates/tasks/detail.html:7
+msgid "Task view"
+msgstr "Просмотр задачи"
 
 #: tasks/templates/tasks/index.html:14
 msgid "Create tasks"
@@ -245,3 +252,4 @@ msgstr "Вы залогинены"
 #: views.py:29
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
