@@ -4,7 +4,7 @@ from django.urls import reverse
 from task_manager.statuses.models import Status
 from task_manager.tasks.models import Tasks
 from task_manager.tasks.views import (CreateTasksView, UpdateTasksView,
-                                      DeleteTasksView)
+                                      DeleteTasksView, DetailTasksView)
 from task_manager.users.models import User
 
 
@@ -108,3 +108,22 @@ class TestDelete(TestCase):
 
         response = self.client.get(reverse('index_tasks'))
         self.assertNotContains(response, 'Task1')
+
+
+class TestDetail(TestCase):
+    fixtures = ['tasks.json',
+                'statuses.json',
+                'users.json']
+
+    def setUp(self):
+        self.client = Client()
+        self.client.force_login(User.objects.first())
+        self.task = Tasks.objects.all().first()
+
+    def test_detail_tasks(self):
+        url_detail = reverse('detail_tasks', kwargs={'pk': self.task.pk})
+        response = self.client.get(url_detail)
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(url_detail, f'/tasks/{self.task.pk}/')
+        self.assertIs(response.resolver_match.func.view_class,
+                      DetailTasksView)
