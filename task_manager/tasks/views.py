@@ -1,7 +1,7 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import (ListView, CreateView, UpdateView,
-                                  DeleteView)
+                                  DeleteView, DetailView)
 from django.views.generic.base import ContextMixin
 from django.utils.translation import gettext as _
 
@@ -44,3 +44,8 @@ class DeleteTasksView(AuthRequiredMixin, SuccessMessageMixin,
     success_url = reverse_lazy("index_tasks")
     no_permission_message = _('Only its author can delete a task')
     no_permission_url = reverse_lazy("index_tasks")
+
+
+class DetailTasksView(AuthRequiredMixin, DetailView):
+    template_name = "tasks/detail.html"
+    model = Tasks

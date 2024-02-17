@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{% translate "Task view" %}</h1>
+    <div class="card">
+        <div class="card-header bg-secondary text-white">
+            <h2>{{ tasks.name }}</h2>
+        </div>
+        <div class="card-body bg-light">
+            <p>{{ tasks.description }}</p>
+            <hr>
+            <div class="container">
+                <div class="row p-1">
+                    <div class="col">{% translate "Author" %}</div>
+                    <div class="col">{{ tasks.author }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">{% translate "Executor" %}</div>
+                    {% if tasks.executor %}
+                    <div class="col">{{ tasks.executor }}</div>
+                    {% endif %}
+                </div>
+                <div class="row p-1">
+                    <div class="col">{% translate "Status" %}</div>
+                    <div class="col">{{ tasks.status }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">{% translate "Created date" %}</div>
+                    <div class="col">{{ tasks.created_at|date:"d.m.Y H:i" }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">
+                        <a href="{% url 'update_tasks' pk=tasks.pk %}">Изменить</a>
+                        <br>
+                        <a href="{% url 'delete_tasks' pk=tasks.pk %}">Удалить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}
