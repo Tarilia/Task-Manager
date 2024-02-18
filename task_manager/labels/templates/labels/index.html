@@ -8,7 +8,7 @@
         {% bootstrap_messages %}
     </div>
     <h1 class="my-4">{% translate 'Labels' %}</h1>
-    <form action="#" method="post" class="form">
+    <form action="{% url 'create_labels' %}" method="post" class="form">
         {% csrf_token %}
 
         {% translate 'Create label' as button_name %}
