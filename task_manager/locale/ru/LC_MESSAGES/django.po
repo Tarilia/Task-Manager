@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-17 14:34+0300\n"
+"POT-Creation-Date: 2024-02-18 15:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,14 +20,60 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: labels/models.py:7 labels/templates/labels/index.html:21
 #: statuses/models.py:7 statuses/templates/statuses/index.html:21
 #: tasks/models.py:10 tasks/templates/tasks/index.html:22
 msgid "Name"
 msgstr "Имя"
 
-#: statuses/models.py:9 tasks/models.py:22 tasks/templates/tasks/detail.html:31
+#: labels/models.py:9 statuses/models.py:9 tasks/models.py:22
+#: tasks/templates/tasks/detail.html:31
 msgid "Created at"
 msgstr "Дата создания"
+
+#: labels/models.py:12
+msgid "Label"
+msgstr "Метка"
+
+#: labels/models.py:13 labels/templates/labels/index.html:10
+#: templates/base.html:28
+msgid "Labels"
+msgstr "Метки"
+
+#: labels/templates/labels/create.html:7 labels/templates/labels/index.html:14
+msgid "Create label"
+msgstr "Создать метку"
+
+#: labels/templates/labels/create.html:12
+#: statuses/templates/statuses/create.html:12
+#: tasks/templates/tasks/create.html:12
+msgid "Create"
+msgstr "Создать"
+
+#: labels/templates/labels/index.html:22
+#: statuses/templates/statuses/index.html:22
+#: tasks/templates/tasks/index.html:26 templates/users/index.html:18
+msgid "Date of creation"
+msgstr "Дата создания"
+
+#: labels/templates/labels/index.html:33
+#: statuses/templates/statuses/index.html:33
+#: statuses/templates/statuses/update.html:12
+#: tasks/templates/tasks/detail.html:36 tasks/templates/tasks/index.html:44
+#: tasks/templates/tasks/update.html:12 templates/users/index.html:30
+msgid "Edit"
+msgstr "Изменить"
+
+#: labels/templates/labels/index.html:35
+#: statuses/templates/statuses/index.html:35
+#: tasks/templates/tasks/detail.html:38 tasks/templates/tasks/index.html:46
+#: templates/users/index.html:32
+msgid "Delete"
+msgstr "Удалить"
+
+#: labels/views.py:22
+msgid "Label successfully created"
+msgstr "Метка успешно создана"
 
 #: statuses/models.py:12 tasks/models.py:13
 #: tasks/templates/tasks/detail.html:27 tasks/templates/tasks/index.html:23
@@ -44,11 +90,6 @@ msgstr "Статусы"
 msgid "Create status"
 msgstr "Создать статус"
 
-#: statuses/templates/statuses/create.html:12
-#: tasks/templates/tasks/create.html:12
-msgid "Create"
-msgstr "Создать"
-
 #: statuses/templates/statuses/delete.html:7
 msgid "Delete status"
 msgstr "Удаление статуса"
@@ -62,23 +103,6 @@ msgstr "Вы уверены, что хотите удалить"
 #: tasks/templates/tasks/delete.html:13 templates/users/delete.html:13
 msgid "Yes, delete"
 msgstr "Да, удалить"
-
-#: statuses/templates/statuses/index.html:22
-#: tasks/templates/tasks/index.html:26 templates/users/index.html:18
-msgid "Date of creation"
-msgstr "Дата создания"
-
-#: statuses/templates/statuses/index.html:33
-#: statuses/templates/statuses/update.html:12
-#: tasks/templates/tasks/index.html:44 tasks/templates/tasks/update.html:12
-#: templates/users/index.html:30
-msgid "Edit"
-msgstr "Изменить"
-
-#: statuses/templates/statuses/index.html:35
-#: tasks/templates/tasks/index.html:46 templates/users/index.html:32
-msgid "Delete"
-msgstr "Удалить"
 
 #: statuses/templates/statuses/update.html:7
 msgid "Edit status"
@@ -169,10 +193,6 @@ msgstr "Менеджер задач"
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/base.html:28
-msgid "Labels"
-msgstr "Метки"
-
 #: templates/base.html:32
 msgid "Logout"
 msgstr "Выход"
@@ -252,4 +272,3 @@ msgstr "Вы залогинены"
 #: views.py:29
 msgid "You are logged out"
 msgstr "Вы разлогинены"
-
