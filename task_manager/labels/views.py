@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from django.views.generic.base import ContextMixin
 
-# Create your views here.
+from task_manager.labels.models import Label
+from task_manager.utils import AuthRequiredMixin
+
+
+class IndexLabelsView(AuthRequiredMixin, ListView, ContextMixin):
+    template_name = "labels/index.html"
+    model = Label
