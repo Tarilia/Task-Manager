@@ -2,7 +2,8 @@ from django.test import TestCase, Client
 from django.urls import reverse
 
 from task_manager.labels.models import Label
-from task_manager.labels.views import CreateLabelsView, UpdateLabelsView
+from task_manager.labels.views import (CreateLabelsView, UpdateLabelsView,
+                                       DeleteLabelsView)
 from task_manager.users.models import User
 
 
@@ -50,7 +51,7 @@ class TestUpdate(TestCase):
         self.old_label = Label.objects.all().first()
         self.updated_label = {'name': 'test_updated_label'}
 
-    def test_statuses_update(self):
+    def test_label_update(self):
         url_update = reverse('update_labels', kwargs={'pk': self.old_label.pk})
 
         response = self.client.get(url_update)
@@ -65,3 +66,31 @@ class TestUpdate(TestCase):
 
         response = self.client.get(reverse('index_labels'))
         self.assertContains(response, 'test_updated_label')
+
+
+class TestDelete(TestCase):
+    fixtures = ['labels.json',
+                'users.json']
+
+    def setUp(self):
+        self.client = Client()
+        self.client.force_login(User.objects.first())
+        self.del_label = Label.objects.all().first()
+
+    def test_delete_label(self):
+        response = self.client.get(reverse('index_labels'))
+        self.assertContains(response, 'label1')
+
+        url_delete = reverse('delete_labels', kwargs={'pk': self.del_label.pk})
+        response = self.client.get(url_delete)
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(url_delete, f'/labels/{self.del_label.pk}/delete/')
+        self.assertIs(response.resolver_match.func.view_class,
+                      DeleteLabelsView)
+
+        response = self.client.post(url_delete)
+        self.assertRedirects(response, reverse('index_labels'), 302)
+        self.assertEqual(response['Location'], reverse('index_labels'))
+
+        response = self.client.get(reverse('index_labels'))
+        self.assertNotContains(response, 'label1')
