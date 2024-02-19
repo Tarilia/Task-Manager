@@ -5,8 +5,8 @@
 {% block content %}
 <div class="container wrapper flex-grow-1">
   <h1 class="my-4">{% translate 'Delete status' %}</h1>
-  <p>{% trans 'Are you sure you want to delete' %} {{ status.name }}?</p>
-  <form action="{% url 'delete_statuses' pk=status.pk %}" method="post" class="form">
+  <p>{% translate 'Are you sure you want to delete' %} {{ status.name }}?</p>
+  <form method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
 

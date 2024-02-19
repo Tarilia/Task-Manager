@@ -1,7 +1,8 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 
-from task_manager.labels.views import CreateLabelsView
+from task_manager.labels.models import Label
+from task_manager.labels.views import CreateLabelsView, UpdateLabelsView
 from task_manager.users.models import User
 
 
@@ -36,3 +37,31 @@ class TestCreate(TestCase):
 
         response = self.client.get(reverse('index_labels'))
         self.assertContains(response, 'Test label')
+
+
+class TestUpdate(TestCase):
+    fixtures = [
+        'labels.json',
+        'users.json']
+
+    def setUp(self):
+        self.client = Client()
+        self.client.force_login(User.objects.first())
+        self.old_label = Label.objects.all().first()
+        self.updated_label = {'name': 'test_updated_label'}
+
+    def test_statuses_update(self):
+        url_update = reverse('update_labels', kwargs={'pk': self.old_label.pk})
+
+        response = self.client.get(url_update)
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(url_update, f'/labels/{self.old_label.pk}/update/')
+        self.assertIs(response.resolver_match.func.view_class,
+                      UpdateLabelsView)
+
+        response = self.client.post(url_update, self.updated_label)
+        self.assertRedirects(response, reverse('index_labels'), 302)
+        self.assertEqual(response['Location'], reverse('index_labels'))
+
+        response = self.client.get(reverse('index_labels'))
+        self.assertContains(response, 'test_updated_label')

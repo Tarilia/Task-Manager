@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container wrapper flex-grow-1">
   <h1 class="my-4">{% translate 'Delete task' %}</h1>
-  <p>{% trans 'Are you sure you want to delete' %} {{ tasks.name }}?</p>
+  <p>{% translate 'Are you sure you want to delete' %} {{ tasks.name }}?</p>
   <form method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
