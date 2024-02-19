@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-19 14:20+0300\n"
+"POT-Creation-Date: 2024-02-19 14:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,6 +50,22 @@ msgstr "Создать метку"
 msgid "Create"
 msgstr "Создать"
 
+#: labels/templates/labels/delete.html:7
+msgid "Delete label"
+msgstr "Удаление метки"
+
+#: labels/templates/labels/delete.html:8
+#: statuses/templates/statuses/delete.html:8
+#: tasks/templates/tasks/delete.html:8 templates/users/delete.html:8
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: labels/templates/labels/delete.html:13
+#: statuses/templates/statuses/delete.html:13
+#: tasks/templates/tasks/delete.html:13 templates/users/delete.html:13
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
 #: labels/templates/labels/index.html:22
 #: statuses/templates/statuses/index.html:22
 #: tasks/templates/tasks/index.html:26 templates/users/index.html:18
@@ -75,13 +91,21 @@ msgstr "Удалить"
 msgid "Edit label"
 msgstr "Изменение метки"
 
-#: labels/views.py:22
+#: labels/views.py:23
 msgid "Label successfully created"
 msgstr "Метка успешно создана"
 
-#: labels/views.py:31
+#: labels/views.py:32
 msgid "Label changed successfully"
 msgstr "Метка успешно изменена"
+
+#: labels/views.py:39
+msgid "Label successfully deleted"
+msgstr "Метка успешно удалена"
+
+#: labels/views.py:41
+msgid "Cannot delete label because it is in use"
+msgstr "Невозможно удалить метку, потому что она используется"
 
 #: statuses/models.py:12 tasks/models.py:13
 #: tasks/templates/tasks/detail.html:27 tasks/templates/tasks/index.html:23
@@ -101,16 +125,6 @@ msgstr "Создать статус"
 #: statuses/templates/statuses/delete.html:7
 msgid "Delete status"
 msgstr "Удаление статуса"
-
-#: statuses/templates/statuses/delete.html:8
-#: tasks/templates/tasks/delete.html:8 templates/users/delete.html:8
-msgid "Are you sure you want to delete"
-msgstr "Вы уверены, что хотите удалить"
-
-#: statuses/templates/statuses/delete.html:13
-#: tasks/templates/tasks/delete.html:13 templates/users/delete.html:13
-msgid "Yes, delete"
-msgstr "Да, удалить"
 
 #: statuses/templates/statuses/update.html:7
 msgid "Edit status"
