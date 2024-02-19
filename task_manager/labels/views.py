@@ -1,6 +1,6 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from django.views.generic.base import ContextMixin
 from django.utils.translation import gettext as _
 
@@ -20,3 +20,12 @@ class CreateLabelsView(AuthRequiredMixin, SuccessMessageMixin,
     form_class = LabelsForm
     success_url = reverse_lazy("index_labels")
     success_message = _("Label successfully created")
+
+
+class UpdateLabelsView(AuthRequiredMixin, SuccessMessageMixin,
+                       UpdateView):
+    template_name = "labels/update.html"
+    model = Label
+    form_class = LabelsForm
+    success_url = reverse_lazy("index_labels")
+    success_message = _("Label changed successfully")

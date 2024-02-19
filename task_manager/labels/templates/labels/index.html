@@ -30,7 +30,7 @@
             <td>{{ label.name }}</td>
             <td>{{ label.created_at|date:'d.m.Y H:i' }}</td>
             <td>
-                <a class="text-body-emphasis fw-bold" href="#">{% translate 'Edit' %}</a>
+                <a class="text-body-emphasis fw-bold" href="{% url 'update_labels' pk=label.pk %}">{% translate 'Edit' %}</a>
                 <br>
                 <a class="text-body-emphasis fw-bold" href="#">{% translate 'Delete' %}</a>
             </td>
