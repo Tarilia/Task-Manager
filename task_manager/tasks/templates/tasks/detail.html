@@ -33,6 +33,16 @@
                 </div>
                 <div class="row p-1">
                     <div class="col">
+                        <h6>{% translate "Labels" %}:</h6>
+                        <ul>
+                            {% for label in tasks.labels.all %}
+                            <li>{{ label.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">
                         <a class="text-body-emphasis fw-bold" href="{% url 'update_tasks' pk=tasks.pk %}">{% translate 'Edit' %}</a>
                         <br>
                         <a class="text-body-emphasis fw-bold" href="{% url 'delete_tasks' pk=tasks.pk %}">{% translate 'Delete' %}</a>
