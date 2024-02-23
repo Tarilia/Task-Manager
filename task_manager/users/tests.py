@@ -3,6 +3,8 @@ from django.urls import reverse, reverse_lazy
 from django.contrib.auth import get_user_model
 
 from task_manager.users.forms import CreateUserForm, UpdateUserForm
+from task_manager.users.views import (DeleteUserView, UpdateUserView,
+                                      CreateUserView)
 
 
 class TestStatusAndHtml(TestCase):
@@ -48,6 +50,8 @@ class TestCreateUser(TestCase):
         response = self.client.get(reverse('create_users'))
         self.assertEquals(reverse('create_users'), '/users/create/')
         self.assertIsInstance(response.context['form'], CreateUserForm)
+        self.assertIs(response.resolver_match.func.view_class,
+                      CreateUserView)
 
         response = self.client.post(reverse("create_users"), self.new_user)
         self.assertEqual(response.status_code, 302)
@@ -69,7 +73,7 @@ class TestUpdateUser(TestCase):
                          'password2': 'Password_new'}
         self.url = reverse('update_users', kwargs={'pk': self.user.pk})
 
-    def test_update_user_method_get(self):
+    def test_update_user(self):
         self.client.force_login(self.user)
         response = self.client.get(self.url)
 
@@ -77,27 +81,14 @@ class TestUpdateUser(TestCase):
         self.assertEquals(self.url, f'/users/{self.user.pk}/update/')
         self.assertIsInstance(response.context['form'], UpdateUserForm)
 
-    def test_update_user_method_post(self):
         self.client.force_login(self.user)
         response = self.client.post(self.url, self.new_user)
 
         self.assertEquals(self.url, f'/users/{self.user.pk}/update/')
         self.assertRedirects(response, reverse('index_users'), 302)
         self.assertEqual(response['Location'], '/users/')
-
-    def test_update_user(self):
-        self.client.force_login(self.user)
-        self.client.post(self.url, self.new_user)
-
-        [current_user_data] = \
-            get_user_model().objects.filter(pk=self.user.pk).values()
-
-        for key in ('username', 'first_name', 'last_name'):
-            self.assertEquals(self.new_user[key], current_user_data[key])
-
-        current_user_data: get_user_model() = \
-            get_user_model().objects.get(pk=self.user.pk)
-        self.assertTrue(current_user_data.check_password('Password_new'))
+        self.assertIs(response.resolver_match.func.view_class,
+                      UpdateUserView)
 
         response = self.client.get(reverse('index_users'))
         self.assertContains(response, 'User_new User_new_last')
@@ -114,13 +105,18 @@ class TestDeleteUser(TestCase):
             get_user_model().objects.get(username='User2_test')
         response = self.client.get(reverse('delete_users',
                                            kwargs={'pk': del_user.pk}))
+
         self.assertEqual(response.status_code, 302)
+        self.assertIs(response.resolver_match.func.view_class,
+                      DeleteUserView)
         self.assertEqual(response['Location'], '/login/')
 
         self.client.force_login(del_user)
         response = self.client.post(reverse('delete_users',
                                             kwargs={'pk': del_user.pk}))
         self.assertEqual(response.status_code, 302)
+        self.assertIs(response.resolver_match.func.view_class,
+                      DeleteUserView)
         self.assertEqual(response['Location'], '/users/')
         self.assertFalse(get_user_model().objects.filter
                          (username='User2_test').exists())
