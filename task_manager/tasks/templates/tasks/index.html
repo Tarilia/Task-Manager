@@ -7,6 +7,7 @@
     <div class="mt-4">
         {% bootstrap_messages %}
     </div>
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
     <h1 class="my-4">{% translate 'Tasks' %}</h1>
     <form action="{% url 'create_tasks' %}" method="post" class="form">
         {% csrf_token %}
@@ -14,6 +15,7 @@
         {% translate 'Create tasks' as button_name %}
         {% bootstrap_button button_type="submit" button_class="btn btn-secondary" content=button_name %}
     </form>
+    </div>
 
     <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
         <div class="px-0">
@@ -26,6 +28,7 @@
         </div>
     </div>
 
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
     <table class="table table-stripped">
         <thead>
         <tr>
@@ -60,5 +63,6 @@
         </tbody>
         {% endfor %}
     </table>
+    </div>
 </div>
 {% endblock content %}

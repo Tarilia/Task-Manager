@@ -7,13 +7,15 @@
     <div class="mt-4">
         {% bootstrap_messages %}
     </div>
-    <h1 class="my-4">{% translate "Login" %}</h1>
-    <form action="{% url 'login' %}" method="post" class="form">
-        {% csrf_token %}
-        {% bootstrap_form form %}
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+      <h1 class="my-4">{% translate "Login" %}</h1>
+      <form action="{% url 'login' %}" method="post" class="form">
+          {% csrf_token %}
+          {% bootstrap_form form %}
 
-        {% translate "Log in" as button_name %}
-        {% bootstrap_button button_type="submit" button_class="btn btn-secondary" content=button_name %}
-    </form>
+          {% translate "Log in" as button_name %}
+          {% bootstrap_button button_type="submit" button_class="btn btn-secondary" content=button_name %}
+      </form>
+    </div>
 </div>
 {% endblock %}

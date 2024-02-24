@@ -7,6 +7,7 @@
     <div class="mt-4">
         {% bootstrap_messages %}
     </div>
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
     <h1 class="my-4">{% translate 'Users' %}</h1>
 
     <table class="table table-striped">
@@ -22,7 +23,7 @@
         <tbody>
         {% for user in object_list %}
         <tr>
-            <td>{{ user.pk }}</td>
+            <td>{{ user.id }}</td>
             <td>{{ user.username }}</td>
             <td>{{ user.first_name }} {{ user.last_name }}</td>
             <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
@@ -35,5 +36,6 @@
         {% endfor %}
         </tbody>
     </table>
+        </div>
 </div>
 {% endblock content %}

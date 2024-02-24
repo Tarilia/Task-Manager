@@ -7,6 +7,7 @@
     <div class="mt-4">
         {% bootstrap_messages %}
     </div>
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
     <h1 class="my-4">{% translate 'Statuses' %}</h1>
     <form action="{% url 'create_statuses' %}" method="post" class="form">
         {% csrf_token %}
@@ -38,5 +39,6 @@
         </tbody>
         {% endfor %}
     </table>
+    </div>
 </div>
 {% endblock content %}

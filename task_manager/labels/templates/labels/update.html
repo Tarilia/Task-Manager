@@ -4,6 +4,7 @@
 
 {% block content %}
 <div class="container wrapper flex-grow-1">
+  <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
   <h1 class="my-4">{% translate "Edit label" %}</h1>
   <form method="post" class="form">
     {% csrf_token %}
@@ -12,5 +13,6 @@
     {% translate 'Edit' as button_name %}
     {% bootstrap_button button_type="submit" button_class="btn btn-secondary" content=button_name %}
   </form>
+  </div>
 </div>
 {% endblock %}
