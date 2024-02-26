@@ -45,7 +45,7 @@
         <tbody>
         <tr>
             <td>{{ task.pk }}</td>
-            <td><a class="text-body-emphasis fw-bold" href="{% url 'detail_tasks' pk=task.pk %}">{{ task.name }}</a></td>
+            <td><a class="text-body-emphasis fw-bold" href="{% url 'detail_tasks' pk=task.pk %}">{{ task }}</a></td>
             <td>{{ task.status }}</td>
             <td>{{ task.author }}</td>
             {% if task.executor %}
