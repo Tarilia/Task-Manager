@@ -6,19 +6,21 @@
 
 ### [Task Manager](https://task-manager-bkxd.onrender.com)
 
- - это веб-приложение, созданное на основе фреймворка Django.
- - для верстки использовался Bootstrap5.
+ - веб-приложение, созданное на основе фреймворка Django.
+ - для верстки используется Bootstrap5.
  - позволяет пользователям создавать задачи, назначать исполнителей и отслеживать статусы задач.
 
 ### Установка:
 
- - git clone git@github.com:Tarilia/python-project-52.git
+ - клонировать этот репозиторий
  - poetry install
  - make migrate
- - make dev
+ - make dev - для локального использования
+ - make start - для продакшена
 
- Для настройки приложения нужно установить следующие переменные среды:
+ Для настройки приложения, нужно установить в .env следующие переменные среды:
 
+ - DEBUG
  - DATABASE_URL
  - SECRET_KEY
  - ROLLBAR
@@ -49,3 +51,7 @@
 [![image.png](https://i.postimg.cc/tTtJ6s0K/image.png)](https://postimg.cc/HcnTDskz)
 
 [![image.png](https://i.postimg.cc/3r1WJ0Fp/image.png)](https://postimg.cc/dD7J51Xt)
+
+ - информацию по задаче можно проссмотреть:
+
+[![image.png](https://i.postimg.cc/SK9kPTzj/image.png)](https://postimg.cc/qtpPhGwd)
