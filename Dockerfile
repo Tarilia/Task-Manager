@@ -5,7 +5,7 @@ ENV PYTHONDONTWEITEBYTECODE 1
 
 WORKDIR /task-manager
 
-RUN pip install "poetry==1.5.1"
+RUN pip install "poetry==1.7.0"
 
 COPY . .
 

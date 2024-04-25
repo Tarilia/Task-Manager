@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  task-manager:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: dev
+    container_name: task-manager
+    restart: unless-stopped
+    volumes:
+      - .:/task-manager
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    command: >
+      bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+
+
+  db:
+    image: postgres
+    container_name: task-managerdb
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:
