@@ -25,6 +25,14 @@
  - SECRET_KEY
  - ROLLBAR
 
+### Docker:
+ Для настройки нужно установить в .env следующие переменные среды:
+ - DATABASE_URL в следующийем формате: DATABASE_URL={provider}://{user}:{password}@{host}:{port}/{db}
+ - POSTGRES_PASSWORD
+ - POSTGRES_USER
+ - POSTGRES_DB
+
+Запуск: docker-compose up
 
 ### Визуализация:
 
