@@ -5,7 +5,12 @@ ENV PYTHONDONTWEITEBYTECODE 1
 
 WORKDIR /task-manager
 
+COPY pyproject.toml ./
+COPY poetry.lock ./
+
 RUN pip install "poetry==1.7.0"
+RUN poetry export -f requirements.txt --output requirements.txt
+RUN pip install -r requirements.txt
 
 COPY . .
 
