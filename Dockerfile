@@ -5,18 +5,14 @@ ENV PYTHONDONTWEITEBYTECODE 1
 
 WORKDIR /task-manager
 
-COPY pyproject.toml ./
-COPY poetry.lock ./
+RUN pip install --upgrade pip --no-cache-dir && \
+    pip install poetry --no-cache-dir && \
+    poetry config virtualenvs.create false && \
+    poetry config installer.max-workers 1
 
-RUN pip install "poetry==1.7.0"
-RUN poetry export -f requirements.txt --output requirements.txt
-RUN pip install -r requirements.txt
+COPY pyproject.toml poetry.lock ./
 
 COPY . .
-
-RUN poetry config virtualenvs.create false
-RUN poetry config installer.max-workers 1
-
 
 FROM base as dev
 
